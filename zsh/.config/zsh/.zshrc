@@ -11,7 +11,6 @@ bindkey "^U" backward-kill-line
 source "$ZDOTDIR/minimal.zsh"
 
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
-export GOPATH="$XDG_DATA_HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
@@ -23,7 +22,7 @@ alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 eval "$(zoxide init zsh --cmd=cd)"
 alias fd="fd -E /mnt/c"
 alias va="source ./.venv/bin/activate"
-alias vim="nvim"
+alias vi="nvim"
 
 alias astroterm="astroterm -a 56 -o 93 -cum"
 alias rate-mirrors="rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist"
