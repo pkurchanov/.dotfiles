@@ -10,9 +10,7 @@
 (set vim.o.ignorecase true)
 (set vim.o.linebreak true)
 (set vim.o.scrolloff 23)
-(set vim.o.guicursor "n-v-c-sm:block,i-ci-ve:hor23-blinkon200-blinkoff300,r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor")
-
-(vim.cmd.colorscheme "catppuccin")
+(set vim.o.guicursor "n-v-c-sm:block,i-ci-ve:ver23-blinkon200-blinkoff300,r-cr:hor20,t:block-blinkon500-blinkoff500-TermCursor")
 
 ;; Keybinds
 (vim.keymap.set "i" "" "λ")
@@ -94,7 +92,11 @@
                {:src (gh "ibhagwan/fzf-lua")
                 :name "fzf"}
                {:src (gh "folke/which-key.nvim")
-                :name "whichkey"}])
+                :name "whichkey"}
+               {:src (gh "catppuccin/nvim")
+                :name "catppuccin"}])
+
+(vim.cmd.colorscheme "catppuccin-mocha")
 
 (λ make-setup [plugin]
    (. (require plugin) :setup))
