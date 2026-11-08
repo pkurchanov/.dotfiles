@@ -1,16 +1,17 @@
-HISTFILE=$HOME/.histfile
+bindkey -e
+bindkey "^U" backward-kill-line
+
+mkdir -p "$XDG_STATE_HOME/zsh"
+HISTFILE="$XDG_STATE_HOME/zsh/history"
 HISTSIZE=1000
 SAVEHIST=1000
-bindkey -e
+
 zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
-compinit
-
+mkdir -p "$XDG_CACHE_HOME/zsh"
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
-bindkey "^U" backward-kill-line
 source "$ZDOTDIR/minimal.zsh"
 
-export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export GOPATH="$XDG_DATA_HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 export MANPAGER="nvim +Man!"
