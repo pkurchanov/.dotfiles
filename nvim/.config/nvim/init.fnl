@@ -21,15 +21,6 @@
                 "<leader>pu"
                 #(vim.pack.update)
                 {:desc "Plugin update"})
-(vim.keymap.set "n"
-                "<leader>pv"
-                #(vim.pack.del (: (: (: (vim.iter (vim.pack.get))
-                                        :filter
-                                        #(not $.active))
-                                     :map
-                                     #($.spec.name))
-                                  :totable))
-                {:desc "Plugin vacuum"})
 
 (λ make-fzf [picker]
   #(vim.cmd (.. "FzfLua " picker)))
@@ -104,7 +95,7 @@
 ((make-setup "fzf-lua") ["border-fused" "skim"])
 
 ;; Languages
-(vim.lsp.enable ["fennel_ls" "clojure_lsp"])
+(vim.lsp.enable ["fennel_ls" "clojure_lsp" "gopls"])
 
 (set vim.g.conjure#log#jump_to_latest#enabled true)
 (set vim.g.conjure#log#jump_to_latest#cursor_scroll_position "bottom")
