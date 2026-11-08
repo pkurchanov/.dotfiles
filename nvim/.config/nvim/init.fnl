@@ -4,13 +4,12 @@
 
 (set vim.o.shiftwidth 2)
 (set vim.o.expandtab true)
+(set vim.o.linebreak true)
+(set vim.o.breakindent true)
 (set vim.o.number true)
 (set vim.o.relativenumber true)
-(set vim.o.breakindent true)
 (set vim.o.ignorecase true)
-(set vim.o.linebreak true)
 (set vim.o.scrolloff 23)
-(set vim.o.guicursor "n-v-c-sm:block,i-ci-ve:ver23-blinkon200-blinkoff300,r-cr:hor20,t:block-blinkon500-blinkoff500-TermCursor")
 
 ;; Keybinds
 (vim.keymap.set "i" "" "λ")
@@ -66,8 +65,9 @@
          kind ev.data.kind
          upd? (or (= kind "install")
                   (= kind "update"))]
-     (if (and (= name "treesitter") upd?)
-         (vim.cmd "TSInstall lua fennel clojure zsh"))))
+     (if (and (= name "treesitter")
+              upd?)
+         (vim.cmd "TSInstall lua fennel clojure go zsh"))))
 
 (vim.api.nvim_create_autocmd "PackChanged" {:callback build})
 

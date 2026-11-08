@@ -3,13 +3,12 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
+vim.o.linebreak = true
+vim.o.breakindent = true
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.breakindent = true
 vim.o.ignorecase = true
-vim.o.linebreak = true
 vim.o.scrolloff = 23
-vim.o.guicursor = "n-v-c-sm:block,i-ci-ve:ver23-blinkon200-blinkoff300,r-cr:hor20,t:block-blinkon500-blinkoff500-TermCursor"
 vim.keymap.set("i", "\f", "\206\187")
 vim.keymap.set("n", "<leader>r", "<CMD>restart<CR>", {desc = "Restart Neovim"})
 local function _1_()
@@ -28,7 +27,7 @@ end
 vim.keymap.set("n", "<leader>pv", _2_, {desc = "Plugin vacuum"})
 local function make_fzf(picker)
   if (nil == picker) then
-    _G.error("Missing argument picker on init.fnl:35", 2)
+    _G.error("Missing argument picker on init.fnl:34", 2)
   else
   end
   local function _6_()
@@ -44,14 +43,14 @@ vim.keymap.set("n", "<leader>fd", make_fzf("diagnostics_document"), {desc = "Fin
 vim.keymap.set("n", "<leader>fk", make_fzf("keymaps"), {desc = "Find keymaps"})
 local function build(ev)
   if (nil == ev) then
-    _G.error("Missing argument ev on init.fnl:64", 2)
+    _G.error("Missing argument ev on init.fnl:63", 2)
   else
   end
   local name = ev.data.spec.name
   local kind = ev.data.kind
   local upd_3f = ((kind == "install") or (kind == "update"))
   if ((name == "treesitter") and upd_3f) then
-    return vim.cmd("TSInstall lua fennel clojure zsh")
+    return vim.cmd("TSInstall lua fennel clojure go zsh")
   else
     return nil
   end
