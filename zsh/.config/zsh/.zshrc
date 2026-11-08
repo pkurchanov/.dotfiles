@@ -25,6 +25,7 @@ alias fd="fd -E /mnt/c"
 alias va="source ./.venv/bin/activate"
 alias vi="nvim"
 
+alias fnl="rlwrap fennel --repl"
 alias astroterm="astroterm -a 56 -o 93 -cum"
 alias rate-mirrors="rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist"
 
