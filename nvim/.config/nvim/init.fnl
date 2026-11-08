@@ -54,10 +54,6 @@
                 "<leader>fd"
                 (make-fzf "diagnostics_document")
                 {:desc "Find diagnostics"})
-(vim.keymap.set "n"
-                "<leader>fk"
-                (make-fzf "keymaps")
-                {:desc "Find keymaps"})
 
 ;; Autocommands
 (λ build [ev]
@@ -108,7 +104,7 @@
 ((make-setup "fzf-lua") ["border-fused" "skim"])
 
 ;; Languages
-(vim.lsp.enable "clojure_lsp")
+(vim.lsp.enable ["fennel_ls" "clojure_lsp"])
 
 (set vim.g.conjure#log#jump_to_latest#enabled true)
 (set vim.g.conjure#log#jump_to_latest#cursor_scroll_position "bottom")

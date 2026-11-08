@@ -40,10 +40,9 @@ vim.keymap.set("n", "<leader>fb", make_fzf("buffers"), {desc = "Find buffers"})
 vim.keymap.set("n", "<leader>fh", make_fzf("helptags"), {desc = "Find help"})
 vim.keymap.set("n", "<leader>fg", make_fzf("grep_visual"), {desc = "Find grep"})
 vim.keymap.set("n", "<leader>fd", make_fzf("diagnostics_document"), {desc = "Find diagnostics"})
-vim.keymap.set("n", "<leader>fk", make_fzf("keymaps"), {desc = "Find keymaps"})
 local function build(ev)
   if (nil == ev) then
-    _G.error("Missing argument ev on init.fnl:63", 2)
+    _G.error("Missing argument ev on init.fnl:59", 2)
   else
   end
   local name = ev.data.spec.name
@@ -58,7 +57,7 @@ end
 vim.api.nvim_create_autocmd("PackChanged", {callback = build})
 local function gh(repo)
   if (nil == repo) then
-    _G.error("Missing argument repo on init.fnl:75", 2)
+    _G.error("Missing argument repo on init.fnl:71", 2)
   else
   end
   return ("https://github.com/" .. repo)
@@ -67,7 +66,7 @@ vim.pack.add({gh("Olical/nfnl"), gh("Olical/conjure"), {src = gh("gpanders/nvim-
 vim.cmd.colorscheme("catppuccin-mocha")
 local function make_setup(plugin)
   if (nil == plugin) then
-    _G.error("Missing argument plugin on init.fnl:101", 2)
+    _G.error("Missing argument plugin on init.fnl:97", 2)
   else
   end
   return require(plugin).setup
@@ -77,7 +76,7 @@ make_setup("mini.surround")()
 make_setup("mini.jump2d")()
 make_setup("mini.icons")()
 make_setup("fzf-lua")({"border-fused", "skim"})
-vim.lsp.enable("clojure_lsp")
+vim.lsp.enable({"fennel_ls", "clojure_lsp"})
 vim.g["conjure#log#jump_to_latest#enabled"] = true
 vim.g["conjure#log#jump_to_latest#cursor_scroll_position"] = "bottom"
 return {}
