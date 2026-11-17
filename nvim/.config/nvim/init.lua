@@ -30,7 +30,7 @@ vim.keymap.set("n", "<leader>fb", make_fzf("buffers"), {desc = "Find buffers"})
 vim.keymap.set("n", "<leader>fh", make_fzf("helptags"), {desc = "Find help"})
 vim.keymap.set("n", "<leader>fg", make_fzf("grep_visual"), {desc = "Find grep"})
 vim.keymap.set("n", "<leader>fd", make_fzf("diagnostics_document"), {desc = "Find diagnostics"})
-local function build(ev)
+local function tsit_init(ev)
   if (nil == ev) then
     _G.error("Missing argument ev on init.fnl:50", 2)
   else
@@ -39,12 +39,12 @@ local function build(ev)
   local kind = ev.data.kind
   local upd_3f = ((kind == "install") or (kind == "update"))
   if ((name == "treesitter") and upd_3f) then
-    return vim.cmd("TSInstall lua fennel clojure go zsh")
+    return vim.cmd("TSInstall lua fennel zsh clojure go")
   else
     return nil
   end
 end
-vim.api.nvim_create_autocmd("PackChanged", {callback = build})
+vim.api.nvim_create_autocmd("PackChanged", {callback = tsit_init})
 local function gh(repo)
   if (nil == repo) then
     _G.error("Missing argument repo on init.fnl:62", 2)
@@ -67,6 +67,4 @@ make_setup("mini.jump2d")()
 make_setup("mini.icons")()
 make_setup("fzf-lua")({"border-fused", "skim"})
 vim.lsp.enable({"fennel_ls", "clojure_lsp", "gopls"})
-vim.g["conjure#log#jump_to_latest#enabled"] = true
-vim.g["conjure#log#jump_to_latest#cursor_scroll_position"] = "bottom"
 return {}

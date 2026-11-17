@@ -47,16 +47,16 @@
                 {:desc "Find diagnostics"})
 
 ;; Autocommands
-(λ build [ev]
+(λ tsit-init [ev]
    (let [name ev.data.spec.name
          kind ev.data.kind
          upd? (or (= kind "install")
                   (= kind "update"))]
      (if (and (= name "treesitter")
               upd?)
-         (vim.cmd "TSInstall lua fennel clojure go zsh"))))
+         (vim.cmd "TSInstall lua fennel zsh clojure go"))))
 
-(vim.api.nvim_create_autocmd "PackChanged" {:callback build})
+(vim.api.nvim_create_autocmd "PackChanged" {:callback tsit-init})
 
 ;; Plugins
 (λ gh [repo]
@@ -96,8 +96,5 @@
 
 ;; Languages
 (vim.lsp.enable ["fennel_ls" "clojure_lsp" "gopls"])
-
-(set vim.g.conjure#log#jump_to_latest#enabled true)
-(set vim.g.conjure#log#jump_to_latest#cursor_scroll_position "bottom")
 
 {}
